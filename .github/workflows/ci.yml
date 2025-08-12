@@ -7,6 +7,13 @@ jobs:
     steps:
       - name: Get code
         uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependency
+        run: npm ci
       - name: list code
-        run: ls -a
-      - run: echo "Good bye"
+        run: |
+          ls -a
+          echo "Success"
