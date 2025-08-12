@@ -24,5 +24,13 @@ jobs:
     runs-on: ubuntu-latest
     needs: test-job
     steps:
-      - name: build code
+      - name: Get code
+        uses: actions/checkout@v4
+      - name: Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependency
+        run: npm ci
+      - name: Build code
         run: npm run build
