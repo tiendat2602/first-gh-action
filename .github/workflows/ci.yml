@@ -15,7 +15,9 @@ jobs:
         id: cache-dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: |
+            ~/.npm
+            node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependency
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
@@ -41,7 +43,9 @@ jobs:
         id: cache-dependencies
         uses: actions/cache@v4
         with:
-          path: ~/.npm
+          path: |
+            ~/.npm
+            node_modules
           key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependency
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
