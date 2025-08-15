@@ -22,10 +22,6 @@ jobs:
       - name: Install dependency
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: npm ci
-      - name: list code
-        run: |
-          ls -a
-          echo "Success"
       - name: unit test
         run: echo "npm run test"
   build-job:
