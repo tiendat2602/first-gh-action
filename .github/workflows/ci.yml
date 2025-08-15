@@ -15,10 +15,8 @@ jobs:
         id: cache-dependencies
         uses: actions/checkout@v4
         with:
-          path: |
-            ~/.npm
-            node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependency
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: npm ci
@@ -43,10 +41,8 @@ jobs:
         id: cache-dependencies
         uses: actions/checkout@v4
         with:
-          path: |
-            ~/.npm
-            node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Install dependency
         if: steps.cache-dependencies.outputs.cache-hit != 'true'
         run: npm ci
